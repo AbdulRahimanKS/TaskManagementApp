@@ -28,8 +28,8 @@ This is a **Task Management Application** built using **Python 3.12** and  **Dja
 1. **Clone the repository**
 
 ```bash
-git clone <GITHUB_LINK_HERE>
-cd <REPO_FOLDER>
+git clone https://github.com/AbdulRahimanKS/TaskManagementApp.git
+cd TaskManagementApp
 ```
 
 2. **Create a virtual environment**
@@ -84,8 +84,47 @@ http://127.0.0.1:8000/api/schema/swagger_docs/
 
 ## Credentials
 
-Since the database is pushed, you can use the existing credentials:
+Since the database is pushed, you can use some of the existing credentials:
 
 * **Superadmin:** superadmin@noviindus.com / SuperAdmin123
-* **Admin:** [admin@example.com](mailto:admin@example.com) / password123
-* **User:** [user@example.com](mailto:user@example.com) / password123
+* **Admin:** adminuser1@noviindus.com / AdminUser1123
+* **User:** user1@noviindus.com / User1123
+
+---
+
+## API Endpoints
+
+### User Authentication
+
+* **POST /api/v1/Login/** : Users authenticate with email and password and receive a JWT token for further requests.
+
+### Tasks APIs
+
+* **GET api/v1/tasks/** : Fetch all tasks assigned to the user.
+* **PUT api/v1/tasks/{id}/** : Update the status of a task (mark as Completed).
+  * When marking a task as Completed, users must submit a Completion Report and Worked Hours.
+* **GET api/v1/tasks/{id}/report/** : Admins and SuperAdmins can view the Completion Report and Worked Hours for a specific task.
+  * Only available for tasks that are marked as Completed.
+
+---
+
+## Admin Panel
+
+### Manage Users (Superadmin only)
+
+* Only accessible by the Superadmin.
+* Create users and assign roles (Admin or User).
+* Update users to promote or demote roles.
+* Assign users (role: User) to an Admin.
+* Admin users can only see the users assigned to them; they cannot manage users.
+
+### Manage Tasks (Admin & Superadmin)
+
+* Both Admin and Superadmin can manage tasks.
+* Update task status in the task edit section.
+* When marking a task as Completed, working hours and a completion report must be submitted.
+
+### Task Reports (Admin & Superadmin)
+
+* View a list of all completed tasks.
+* See task completion reports and worked hours details.
